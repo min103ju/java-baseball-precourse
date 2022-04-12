@@ -22,4 +22,17 @@ public class BallTest {
         assertThat(status).isEqualTo(BallStatus.STRIKE);
     }
 
+    @Test
+    void ball_테스트() {
+        // Given
+        Ball computerBall = Ball.of(1, 1);
+        Ball humanBall = Ball.of(1, 2);
+
+        // When
+        BallStatus status = humanBall.compareBall(computerBall);
+
+        // Then
+        assertThat(status).isEqualTo(BallStatus.BALL);
+    }
+
 }

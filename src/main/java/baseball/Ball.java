@@ -23,6 +23,10 @@ public class Ball {
             return BallStatus.STRIKE;
         }
 
+        if (this.number == computerBall.number && this.position != computerBall.position) {
+            return BallStatus.BALL;
+        }
+
         return BallStatus.NOTHING;
     }
 
