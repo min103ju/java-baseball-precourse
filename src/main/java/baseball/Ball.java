@@ -9,8 +9,15 @@ public class Ball {
     private int position;
 
     private Ball(int number, int position) {
+        validationBallValue(number);
         this.number = number;
         this.position = position;
+    }
+
+    private void validationBallValue(int number) {
+        if (number < 0 || number > 10) {
+            throw new IllegalArgumentException("숫자는 1~9까지만 입력할 수 있습니다.");
+        }
     }
 
     public static Ball of(int number, int position) {
@@ -23,7 +30,7 @@ public class Ball {
             return BallStatus.STRIKE;
         }
 
-        if (this.number == computerBall.number && this.position != computerBall.position) {
+        if (this.number == computerBall.number) {
             return BallStatus.BALL;
         }
 

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class BallTest {
 
     @Test
-    void strike_테스트() {
+    void strike_Test() {
         // Given
         Ball computerBall = Ball.of(1, 1);
         Ball humanBall = Ball.of(1, 1);
@@ -23,7 +23,7 @@ public class BallTest {
     }
 
     @Test
-    void ball_테스트() {
+    void ball_Test() {
         // Given
         Ball computerBall = Ball.of(1, 1);
         Ball humanBall = Ball.of(1, 2);
@@ -36,7 +36,7 @@ public class BallTest {
     }
 
     @Test
-    void nothing_테스트() {
+    void nothing_Test() {
         // Given
         Ball computerBall = Ball.of(1, 1);
         Ball humanBall = Ball.of(2, 2);
