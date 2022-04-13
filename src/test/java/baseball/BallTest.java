@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -46,6 +47,18 @@ public class BallTest {
 
         // Then
         assertThat(status).isEqualTo(BallStatus.NOTHING);
+    }
+    
+    @Test
+    void Ball_숫자크기_Exception_Test() {
+        // Then
+        assertThatThrownBy(() -> {
+            Ball.of(0, 1);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> {
+            Ball.of(10, 1);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

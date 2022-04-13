@@ -15,7 +15,7 @@ public class Ball {
     }
 
     private void validationBallValue(int number) {
-        if (number < 0 || number > 10) {
+        if (number < 1 || number > 9) {
             throw new IllegalArgumentException("숫자는 1~9까지만 입력할 수 있습니다.");
         }
     }
