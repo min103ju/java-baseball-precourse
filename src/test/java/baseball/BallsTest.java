@@ -1,5 +1,6 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,45 @@ public class BallsTest {
         assertThatThrownBy(() -> {
             new Balls("1234");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void strike_Test() {
+        // Given
+        Balls balls = new Balls("123");
+        Ball userBall = Ball.of(1, 1);
+
+        // When
+        BallStatus status = balls.compareBall(userBall);
+
+        // Then
+        assertThat(status).isEqualTo(BallStatus.STRIKE);
+    }
+
+    @Test
+    void ball_Test() {
+        // Given
+        Balls balls = new Balls("123");
+        Ball userBall = Ball.of(1, 2);
+
+        // When
+        BallStatus status = balls.compareBall(userBall);
+
+        // Then
+        assertThat(status).isEqualTo(BallStatus.BALL);
+    }
+
+    @Test
+    void nothing_Test() {
+        // Given
+        Balls balls = new Balls("123");
+        Ball userBall = Ball.of(4, 1);
+
+        // When
+        BallStatus status = balls.compareBall(userBall);
+
+        // Then
+        assertThat(status).isEqualTo(BallStatus.NOTHING);
     }
 
 }

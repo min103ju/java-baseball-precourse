@@ -18,7 +18,7 @@ public class Balls {
     private List<Ball> convertToBalls(String balls) {
         ArrayList<Ball> result = new ArrayList<>();
         for (int i = 0; i < balls.length(); i++) {
-            result.add(Ball.of(Character.getNumericValue(balls.charAt(i)), 0));
+            result.add(Ball.of(Character.getNumericValue(balls.charAt(i)), i + 1));
         }
         return result;
     }
@@ -30,6 +30,24 @@ public class Balls {
     }
 
     public BallStatus compareBall(Ball userBall) {
-        return BallStatus.STRIKE;
+        List<BallStatus> statuses = new ArrayList<>();
+        for (Ball ball : this.balls) {
+            statuses.add(ball.compareBall(userBall));
+        }
+
+        return getCompareBallResultStatus(statuses);
     }
+
+    private BallStatus getCompareBallResultStatus(List<BallStatus> statuses) {
+        if (statuses.contains(BallStatus.STRIKE)) {
+            return BallStatus.STRIKE;
+        }
+
+        if (statuses.contains(BallStatus.BALL)) {
+            return BallStatus.BALL;
+        }
+
+        return BallStatus.NOTHING;
+    }
+
 }
