@@ -18,7 +18,7 @@ public class Balls {
     private List<Ball> convertToBalls(String balls) {
         ArrayList<Ball> result = new ArrayList<>();
         for (int i = 0; i < balls.length(); i++) {
-            result.add(Ball.of(balls.charAt(0), 0));
+            result.add(Ball.of(Character.getNumericValue(balls.charAt(i)), 0));
         }
         return result;
     }
@@ -27,5 +27,9 @@ public class Balls {
         if (balls.length() != 3) {
             throw new IllegalArgumentException("숫자는 3개이어야 합니다.");
         }
+    }
+
+    public BallStatus compareBall(Ball userBall) {
+        return BallStatus.STRIKE;
     }
 }
