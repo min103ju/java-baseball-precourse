@@ -14,11 +14,11 @@ public class BallsTest {
     void Balls_숫자길이_Exception_Test() {
         // Then
         assertThatThrownBy(() -> {
-            new Balls("12");
+            Balls.ofBallsString("12");
         }).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> {
-            new Balls("1234");
+            Balls.ofBallsString("1234");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,14 +26,14 @@ public class BallsTest {
     void Balls_숫자_중복_Exception_Test() {
         // Then
         assertThatThrownBy(() -> {
-            new Balls("121");
+            Balls.ofBallsString("121");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void strike_Test() {
         // Given
-        Balls balls = new Balls("123");
+        Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(1, 1);
 
         // When
@@ -46,7 +46,7 @@ public class BallsTest {
     @Test
     void ball_Test() {
         // Given
-        Balls balls = new Balls("123");
+        Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(1, 2);
 
         // When
@@ -59,7 +59,7 @@ public class BallsTest {
     @Test
     void nothing_Test() {
         // Given
-        Balls balls = new Balls("123");
+        Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(4, 1);
 
         // When

@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -10,36 +11,43 @@ public class Balls {
 
     private List<Ball> balls;
 
-    public Balls(String balls) {
+    public Balls(List<Integer> balls) {
         validationBalls(balls);
         this.balls = convertToBalls(balls);
+        System.out.println("balls = " + balls);
     }
 
-    private List<Ball> convertToBalls(String balls) {
-        ArrayList<Ball> result = new ArrayList<>();
+    public static Balls ofBallsString(String balls) {
+        List<Integer> convertedBalls = new ArrayList<>();
         for (int i = 0; i < balls.length(); i++) {
-            result.add(Ball.of(Character.getNumericValue(balls.charAt(i)), i + 1));
+            convertedBalls.add(Character.getNumericValue(balls.charAt(i)));
+        }
+        return new Balls(convertedBalls);
+    }
+
+    private List<Ball> convertToBalls(List<Integer> balls) {
+        ArrayList<Ball> result = new ArrayList<>();
+        for (int i = 0; i < balls.size(); i++) {
+            result.add(Ball.of(balls.get(i), i + 1));
         }
         return result;
     }
 
-    private void validationBalls(String balls) {
+    private void validationBalls(List<Integer> balls) {
         validateBallLength(balls);
 
-        for (int i = 0; i < balls.length(); i++) {
-            validateBallDuplicated(balls, i);
-        }
+        validateBallDuplicated(balls);
     }
 
-    private void validateBallDuplicated(String balls, int charIndex) {
-        int maybeDuplicatedIndex = balls.indexOf(balls.charAt(charIndex));
-        if (maybeDuplicatedIndex != charIndex && maybeDuplicatedIndex > -1) {
+    private void validateBallDuplicated(List<Integer> balls) {
+        HashSet<Integer> set = new HashSet<>(balls);
+        if (set.size() < balls.size()) {
             throw new IllegalArgumentException("중복된 숫자가 있어선 안됩니다.");
         }
     }
 
-    private void validateBallLength(String balls) {
-        if (balls.length() != 3) {
+    private void validateBallLength(List<Integer> balls) {
+        if (balls.size() != 3) {
             throw new IllegalArgumentException("숫자는 3개이어야 합니다.");
         }
     }
