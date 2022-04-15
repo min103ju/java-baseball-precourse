@@ -36,7 +36,7 @@ public class Game {
     public boolean isGameEnd() {
         boolean isThreeStrike = compareResult.isThreeStrike();
         if (isThreeStrike) {
-            System.out.println("게임종료");
+            System.out.println("게임 종료");
             isThreeStrike = isRestart();
         }
         return isThreeStrike;
