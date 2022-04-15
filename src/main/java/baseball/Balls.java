@@ -14,7 +14,6 @@ public class Balls {
     public Balls(List<Integer> balls) {
         validationBalls(balls);
         this.balls = convertToBalls(balls);
-        System.out.println("balls = " + balls);
     }
 
     public static Balls ofBallsString(String balls) {
