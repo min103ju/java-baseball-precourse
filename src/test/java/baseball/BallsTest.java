@@ -23,6 +23,14 @@ public class BallsTest {
     }
 
     @Test
+    void Balls_숫자_중복_Exception_Test() {
+        // Then
+        assertThatThrownBy(() -> {
+            new Balls("121");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void strike_Test() {
         // Given
         Balls balls = new Balls("123");

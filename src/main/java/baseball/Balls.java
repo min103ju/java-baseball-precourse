@@ -24,6 +24,21 @@ public class Balls {
     }
 
     private void validationBalls(String balls) {
+        validateBallLength(balls);
+
+        for (int i = 0; i < balls.length(); i++) {
+            validateBallDuplicated(balls, i);
+        }
+    }
+
+    private void validateBallDuplicated(String balls, int charIndex) {
+        int maybeDuplicatedIndex = balls.indexOf(balls.charAt(charIndex));
+        if (maybeDuplicatedIndex != charIndex && maybeDuplicatedIndex > -1) {
+            throw new IllegalArgumentException("중복된 숫자가 있어선 안됩니다.");
+        }
+    }
+
+    private void validateBallLength(String balls) {
         if (balls.length() != 3) {
             throw new IllegalArgumentException("숫자는 3개이어야 합니다.");
         }
