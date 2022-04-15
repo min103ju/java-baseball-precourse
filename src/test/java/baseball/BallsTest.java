@@ -31,7 +31,7 @@ public class BallsTest {
     }
 
     @Test
-    void strike_Test() {
+    void Ball_strike_Test() {
         // Given
         Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(1, 1);
@@ -44,7 +44,7 @@ public class BallsTest {
     }
 
     @Test
-    void ball_Test() {
+    void Ball_ball_Test() {
         // Given
         Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(1, 2);
@@ -57,7 +57,7 @@ public class BallsTest {
     }
 
     @Test
-    void nothing_Test() {
+    void Ball_nothing_Test() {
         // Given
         Balls balls = Balls.ofBallsString("123");
         Ball userBall = Ball.of(4, 1);
@@ -67,6 +67,32 @@ public class BallsTest {
 
         // Then
         assertThat(status).isEqualTo(BallStatus.NOTHING);
+    }
+
+    @Test
+    void Balls_not_3strike_Test() {
+        // Given
+        Balls userBalls = Balls.ofBallsString("123");
+        Balls computerBalls = Balls.ofBallsString("124");
+
+        // When
+        CompareResult result = computerBalls.compareBalls(userBalls);
+
+        // Then
+        assertThat(result.isThreeStrike()).isFalse();
+    }
+
+    @Test
+    void Balls_3strike_Test() {
+        // Given
+        Balls userBalls = Balls.ofBallsString("123");
+        Balls computerBalls = Balls.ofBallsString("123");
+
+        // When
+        CompareResult result = computerBalls.compareBalls(userBalls);
+
+        // Then
+        assertThat(result.isThreeStrike()).isTrue();
     }
 
 }

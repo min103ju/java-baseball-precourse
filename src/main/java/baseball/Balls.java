@@ -52,10 +52,10 @@ public class Balls {
         }
     }
 
-    public BallStatus compareBall(Ball userBall) {
+    public BallStatus compareBall(Ball targetBall) {
         List<BallStatus> statuses = new ArrayList<>();
         for (Ball ball : this.balls) {
-            statuses.add(ball.compareBall(userBall));
+            statuses.add(ball.compareBall(targetBall));
         }
 
         return getCompareBallResultStatus(statuses);
@@ -73,4 +73,11 @@ public class Balls {
         return BallStatus.NOTHING;
     }
 
+    public CompareResult compareBalls(Balls targetBalls) {
+        CompareResult compareResult = new CompareResult();
+        for (Ball ball : this.balls) {
+            compareResult.checkBallStatus(targetBalls.compareBall(ball));
+        }
+        return compareResult;
+    }
 }
