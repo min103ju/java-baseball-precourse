@@ -55,7 +55,6 @@ public class Balls {
         for (Ball ball : this.balls) {
             statuses.add(ball.compareBall(targetBall));
         }
-
         return getCompareBallResultStatus(statuses);
     }
 
@@ -63,11 +62,9 @@ public class Balls {
         if (statuses.contains(BallStatus.STRIKE)) {
             return BallStatus.STRIKE;
         }
-
         if (statuses.contains(BallStatus.BALL)) {
             return BallStatus.BALL;
         }
-
         return BallStatus.NOTHING;
     }
 

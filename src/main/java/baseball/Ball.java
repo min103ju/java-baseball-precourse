@@ -25,15 +25,12 @@ public class Ball {
     }
 
     public BallStatus compareBall(Ball targetBall) {
-
         if (this.equals(targetBall)) {
             return BallStatus.STRIKE;
         }
-
         if (this.number == targetBall.number) {
             return BallStatus.BALL;
         }
-
         return BallStatus.NOTHING;
     }
 

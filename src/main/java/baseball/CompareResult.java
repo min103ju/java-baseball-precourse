@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 /**
  * author : citizen103
  */
@@ -30,17 +28,30 @@ public class CompareResult {
 
     public void printResult() {
         StringBuilder sb = new StringBuilder();
+        setBallMessage(sb);
+        setStrikeMessage(sb);
+        setNothingMessage(sb);
+        System.out.println(sb.toString());
+    }
+
+    private StringBuilder setBallMessage(StringBuilder sb) {
         if (ball != 0) {
             sb.append(String.format("%d볼 ", ball));
         }
+        return sb;
+    }
 
+    private StringBuilder setStrikeMessage(StringBuilder sb) {
         if (strike != 0) {
             sb.append(String.format("%d스트라이크", strike));
         }
+        return sb;
+    }
 
+    private StringBuilder setNothingMessage(StringBuilder sb) {
         if (ball == 0 && strike == 0) {
             sb.append("낫싱");
         }
-        System.out.println(sb.toString());
+        return sb;
     }
 }
