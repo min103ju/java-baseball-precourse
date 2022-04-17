@@ -12,7 +12,7 @@ public class Balls {
     private List<Ball> balls;
 
     public Balls(List<Integer> balls) {
-        validationBalls(balls);
+        validateBalls(balls);
         this.balls = convertToBalls(balls);
     }
 
@@ -32,9 +32,8 @@ public class Balls {
         return result;
     }
 
-    private void validationBalls(List<Integer> balls) {
+    private void validateBalls(List<Integer> balls) {
         validateBallLength(balls);
-
         validateBallDuplicated(balls);
     }
 
